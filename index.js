@@ -3,7 +3,7 @@ const app = express()
 
 const path = require('path')
 const cookieParser = require('cookie-parser')
-
+require('dotenv').config();
 const staticRoute = require('./routes/staticRouter')
 const signUpRouter = require('./Routes/signup')
 const { restrictToLoggedinUserOnly } = require('./middleware/auth')
@@ -29,7 +29,7 @@ connectMongoDB('mongodb://localhost:27017/sign-up')
     })
 
 
-app.listen(3000, () => {
-    console.log('Server started at port 3000');
+app.listen(process.env.PORT, () => {
+    console.log(`server started at:http://localhost:3000/`);
 
 })
